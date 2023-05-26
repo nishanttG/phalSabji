@@ -1,0 +1,148 @@
+/* * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    background: linear-gradient(30deg, #d9d9d9, #a35c8f);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .app-wrapper {
+    background-color: #fff;
+    min-width: 350px;
+    min-height: 650px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 5px;
+  }
+  
+  .title {
+    color: #f80759;
+    text-align: center;
+    margin: 80px 0px 40px 0px;
+  }
+  
+  .name,
+  .email,
+  .password,
+  .phone {
+    margin: 20px;
+    color: #969292;
+    font-size: 16px;
+  }
+  
+  .password {
+    margin-bottom: 40px;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+  }
+  
+  .submit {
+    width: 100%;
+    padding: 10px;
+    background-color: #f80759;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-link a {
+    color: #f80759;
+    text-decoration: none;
+  }
+
+
+  .email,
+.password {
+  margin: 20px 0;
+}
+
+.success-message {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.success-message p {
+  color: green;
+  font-size: 16px;
+} */
+.email,
+.password {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #969292;
+}
+
+.input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #d9d9d9;
+  color: #000;
+}
+
+.submit {
+  width: 100%;
+  padding: 10px;
+  background-color: #f80759;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.success-message {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.success-message p {
+  color: green;
+  font-size: 16px;
+}
+

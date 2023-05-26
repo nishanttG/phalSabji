@@ -1,0 +1,43 @@
+.header{
+ /* position: sticky;   */
+    top:0;
+    min-height: 80px;
+    width:80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-color: #dfcbd0;
+}
+
+.header-Links {
+    display:flex;
+}
+.header-Links ul li {
+    list-style: none;
+    display: inline-block;
+    font-size: 18px;
+
+}
+.header-Links ul li a {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: white;
+    padding: 0px 15px;
+}
+.header-Links ul li a:hover {
+    color: yellow;
+}
+.cart{
+padding-right: 20px;
+margin-right: 30px;
+}
+.cart-Length{
+    margin: 3px;
+    font-size: 14px;
+    font-weight: 700;
+    vertical-align: super;
+    color: #fdd101;
+}
+ 

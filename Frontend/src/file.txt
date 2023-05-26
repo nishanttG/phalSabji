@@ -1,0 +1,160 @@
+import React, { useState } from 'react'
+import data from './components/back/Data'
+import Header from './components/front/Header/Header';
+import { BrowserRouter as Router } from "react-router-dom"
+import Routes from './components/front/Routes/Routes';
+import Cart from './components/front/Cart/Cart';
+import About from './components/front/About/About';
+import "./App.css"
+import Form from './components/front/Signup/Form';
+import Contact from './components/front/Contactus/Contact';
+
+const App = () => {
+  const { productItems } = data;
+  const [cartItems, setCartItems] = useState([]);
+
+  const handleAddProduct = (product) => {
+    const ProductExist = cartItems.find((item) => item.id === product.id);
+    if (ProductExist) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...ProductExist, quantity: ProductExist.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]);
+    }
+  };
+
+  return (
+    <>
+      <div className='app'>
+
+        <Router>
+          <Header />
+          
+          <Routes productItems={productItems} cartItems={cartItems} handleAddProduct={handleAddProduct} />
+          {/* <Switch>
+          <Route path="/about"><About /></Route>
+          <Route path="/about"><About /></Route>
+          
+        </Switch> */}
+        
+        </Router>
+
+      </div>
+    </>
+  );
+};
+
+export default App;
+
+
+import React from 'react'
+import Products from '../Products/Products';
+import Signup from '../Signup/Signup';
+import Cart from'../Cart/Cart';
+import {Route, Switch} from "react-router-dom";
+import About from '../About/About';
+import Contact from '../Contactus/Contact';
+
+
+
+
+const Routes = ({productItems, cartItems, handleAddProduct}) => {
+  return (
+    <div>
+        <Switch>
+            <Route path="/" exact>
+                <Products productItems={productItems} handleAddProduct={handleAddProduct} />
+
+            </Route >
+            <Route path="/About" exact>
+              <About key ="about"/></Route>
+            <Route path="/contactus" exact><Contact key = "contactus"/> </Route> 
+
+            
+           <Route path="/signup" exact>
+              <Signup/>
+            </Route>
+            <Route path="/cart" exact>
+              <Cart cartItems= {cartItems} handleAddProduct={handleAddProduct} />
+            </Route>
+        </Switch>
+    </div>
+  )
+}
+
+export default Routes
+
+
+import React from 'react'
+import { Link } from "react-router-dom";
+import "./Header.css";
+
+const Header = () => {
+    return (
+        <>
+        <header className="header">
+
+            <div>
+                <img src="./images/logo.png" alt="" />
+
+            </div>
+
+            <div className="header-Links">
+                <ul>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <Link to="/about" >About</Link>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <Link to="/contactus"  >Contact Us</Link>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <Link to="/signup"  >SignUp</Link>
+                    </li>
+                </ul>
+                
+                
+                
+                <ul>
+                    <li>
+                        <Link to="/cart" className="cart" >
+                            <i class="fas fa-shopping-cart" />
+                        </Link>
+                    </li>
+                </ul>
+
+
+            </div>
+            </header>
+        </>
+    );
+}
+
+export default Header;
+
+
+
+
+
+
+    
+  
+
+
+
+
+
+
