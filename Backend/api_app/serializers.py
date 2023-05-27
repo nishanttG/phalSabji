@@ -12,12 +12,12 @@ class CategorySerializer(serializers.HyperlinkedModelSerializer):
         model = Category
         fields = '__all__'
 
-class ProductSerializer(serializers.HyperlinkedModelSerializer):
+class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model= Products
         fields= '__all__'
 
-class OrderSerializer(serializers.HyperlinkedModelSerializer):
+class OrderSerializer(serializers.ModelSerializer):
     class Meta:
         model= Order
         fields='__all__'

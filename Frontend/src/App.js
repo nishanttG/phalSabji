@@ -49,7 +49,7 @@
 //         id: item.id,
 //         quantity: item.quantity,
 //       }));
-    
+
 //       // Make an API call to save cartItems
 //       fetch('YOUR_API_ENDPOINT', {
 //         method: 'POST',
@@ -74,7 +74,7 @@
 //           console.error('An error occurred while saving cart items', error);
 //         });
 //     };
-    
+
 //   };
 
 //   return (
@@ -99,9 +99,6 @@
 // };
 
 // export default App;
-
-
-
 
 // app.js
 // import React, { useState } from 'react';
@@ -174,17 +171,41 @@
 
 // export default App;
 
-import React, { useState } from 'react';
-import data from './components/back/Data';
-import Header from './components/front/Header/Header';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from './components/front/Routes/Routes';
-import './App.css';
+import React, { useEffect, useState } from "react";
+
+import Header from "./components/front/Header/Header";
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from "./components/front/Routes/Routes";
+
+import "./App.css";
 
 const App = () => {
-  const { productItems } = data;
+  const [productItems,setProductItems] = useState(null);
   const [cartItems, setCartItems] = useState([]);
-  const [customerId, setCustomerId] = useState('');
+  const [customerId, setCustomerId] = useState("");
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    try {
+      const response = await fetch('http://127.0.0.1:8000/api/product/');
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Products:', data);
+        setProductItems(data)
+        // Process the data or update state accordingly
+      } else {
+        console.error('Failed to fetch products:', response.status);
+        // Handle the error appropriately
+      }
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      // Handle the error appropriately
+    }
+  };
+  
 
   const handleAddProduct = (product) => {
     const productExist = cartItems.find((item) => item.id === product.id);
@@ -233,6 +254,7 @@ const App = () => {
           handleAddProduct={handleAddProduct}
           handleRemoveProduct={handleRemoveProduct}
           handleCartClearance={handleCartClearance}
+          setCustomerId={setCustomerId}
           customerId={customerId} // Pass the customerId prop
         />
       </Router>

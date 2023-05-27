@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const LoginPage = ({ handleCustomerData }) => {
+const LoginPage = ({ setCustomerId }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState(false);
@@ -15,20 +15,45 @@ const LoginPage = ({ handleCustomerData }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Perform login logic here (e.g., API request)
-    // For now, let's assume the login is successful
-    if (email === 'admin@example.com' && password === 'admin') {
-      setLoginError(false);
-      // Clear input fields
-      setEmail('');
-      setPassword('');
-      // Call the parent component's function to handle customer data
-      handleCustomerData('123'); // Pass the customerId as an example
-    } else {
-      setLoginError(true);
-    }
+  
+    // Create the request payload
+    const payload = {
+      email: email,
+      password: password,
+    };
+  
+    // Send a POST request to the backend API
+    fetch('http://127.0.0.1:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response data
+        // Assuming the response contains a success flag and customer data
+        if (data.success) {
+          setLoginError(false);
+          // Clear input fields
+          setEmail('');
+          setPassword('');
+          // Call the parent component's function to handle customer data
+          setCustomerId(data.customerId);
+          console.log(data)
+        } else {
+          setLoginError(true);
+        }
+      })
+      .catch((error) => {
+        // Handle any error that occurred during the request
+        console.error('Error:', error);
+        // Set the login error state accordingly
+        setLoginError(true);
+      });
   };
+  
 
   return (
     <div className="container">

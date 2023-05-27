@@ -69,9 +69,9 @@ const Routes = ({
   handleAddProduct,
   handleRemoveProduct,
   handleCartClearance,
+  setCustomerId,
   customerId,
-  phoneNumber,
-  handleCustomerData, // Include the handleCustomerData prop
+  // Include the handleCustomerData prop
 }) => {
   return (
     <div>
@@ -89,10 +89,10 @@ const Routes = ({
           <ContactUs key="contactus" />
         </Route>
         <Route path="/signup" exact>
-          <SignupForm handleCustomerData={handleCustomerData} />
+          <SignupForm  />
         </Route>
         <Route path="/login" exact>
-          <LoginPage handleCustomerData={handleCustomerData} />
+          <LoginPage setCustomerId={setCustomerId} />
         </Route>
         <Route path="/cart" exact>
           <Cart
@@ -101,7 +101,7 @@ const Routes = ({
             handleRemoveProduct={handleRemoveProduct}
             handleCartClearance={handleCartClearance}
             customerId={customerId}
-            phoneNumber={phoneNumber} // Pass the phoneNumber prop
+             // Pass the phoneNumber prop
           />
         </Route>
       </Switch>
